@@ -1,0 +1,44 @@
+{% extends "eProx/navbar.html" %}
+{% load static %}
+
+{% block body %}
+        
+<br>
+
+<section id="product1" class="section-p1">
+    <h2>Find Your Search Here.......</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="pro-container">
+        {% if searched %}
+            {% for product in searched %}
+                <div class="pro">
+                    <img src="{{ product.picture.url }}" alt="">
+                    <div class="des">
+                        <span>{{ product.name }}</span>
+                        <h5>{{ product.description }}</h5>
+                        <div class="star">
+                            
+                            
+                            
+                            
+                        </div>
+                        <h4>{{ product.price }}</h4>
+                    </div>
+                    <a href="{% url 'productcard' product.id %}"><button>VIEW PRODUCT</button></a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No products found.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock body %}

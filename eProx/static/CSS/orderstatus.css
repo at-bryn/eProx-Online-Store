@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 50vh;
+    background-image: url('../tempelates/8b9ac863d23c7605a4f8895c05f4886d.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color:#ddd ;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: blue;
+}
+
+.customer-details {
+    margin-bottom: 20px;
+}
+
+.customer-details h2 {
+    margin-bottom: 10px;
+}
+
+.customer-details div {
+    margin-bottom: 5px;
+}
+
+.customer-details label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.order-status-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.order-status-table th, .order-status-table td {
+    border: 2px solid #ddd;
+    padding: 20px;
+    text-align: left;;
+}
+
+.order-status-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.order-status-table img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-status-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-status-table .new-orders,
+.order-status-table .pending-orders,
+.order-status-table .cleared-orders {
+    border-right: 2px solid #ddd;
+}
+
+.order-status-table .new-orders:last-child,
+.order-status-table .pending-orders:last-child,
+.order-status-table .cleared-orders:last-child {
+    border-right: none;
+}

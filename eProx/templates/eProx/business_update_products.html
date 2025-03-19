@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">c
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="{% static  '/css/business_page.css' %}">
+
+	<title>updateproducts</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">eProx</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="business_update_order.html">
+					<i class='bx bx-list-ul' ></i>
+					<span class="text">recent orders</span>
+				</a>
+			</li>
+			<li>
+				<a href="business_products.html">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">My inventory</span>
+				</a>
+			</li>
+		
+			
+			
+			
+			<li>
+				<a href="#">
+					<i class='bx bxs-package' ></i>
+					<span class="text">add products</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-package' ></i>
+					<span class="text">update products</span>
+				</a>
+			</li>
+            <li>
+				<a href="myprofile.html">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Profile</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			
+			<li>
+				<a href="{% url 'logout' %}" >
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">menu</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			
+			
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Edit your products</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Home</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">updateproducts</a>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+
+			
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>My products</h3>
+						
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>name</th>
+								<th>upload date</th>
+								<th>options</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src=".png">
+									<p>air jordans</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><a href=""><span class="status completed">edit</span></td></a>
+                                <td><a href=""><span class="status completed">delete</span></td></a>
+							</tr>
+							<tr>
+								<td>
+									<img src=".png">
+									<p>adidas sambas</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><a href=""><span class="status completed">edit</span></td></a>
+                                <td><a href=""><span class="status completed">delete</span></td></a>
+							</tr>
+							<tr>
+								<td>
+									<img src=".png">
+									<p>Brogues</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><a href=""><span class="status completed">edit</span></td></a>
+                                <td><a href=""><span class="status completed">delete</span></td></a>
+							</tr>
+							<tr>
+								<td>
+									<img src=".png">
+									<p>oxfords</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><a href=""><span class="status completed">edit</span></td></a>
+                                <td><a href=""><span class="status completed">delete</span></td></a>
+							</tr>
+							<tr>
+								<td>
+									<img src=".png">
+									<p>yeezy slides</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><a href=""><span class="status completed">edit</span></td></a>
+                                <td><a href=""><span class="status completed">delete</span></td></a>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="{% static 'js/business_page.js' %}"></script>
+</body>
+</html>

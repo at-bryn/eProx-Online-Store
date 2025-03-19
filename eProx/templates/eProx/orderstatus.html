@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Status Form</title>
+    <link rel="stylesheet" type="text/css" href="orderstatus.css">
+</head>
+<body>
+    <a href="#" class="back-button">Back</a>
+    <h1>ORDER STATUS</h1>
+    <div class="customer-details">
+        <h2>Customer Details</h2>
+        <div>
+            <label for="customerName">Name: {{user.username}}</label>
+            <span id="customerName"></span>
+        </div>
+        <div>
+            <label for="customerEmail">Email: {{user.email}}</label>
+            <span id="customerEmail"></span>
+        </div>
+        <div>
+            <label for="customerAddress">Address: {{user.customer.address}}</label>
+            <span id="customerAddress"></span>
+        </div>
+    </div>
+    <h2>Order Details</h2>
+    <table class="order-status-table">
+        <tr>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Products</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                {% for item in order.orderitem_set.all %}
+                <div>
+                    <img src="{{ item.product.imageURL }}" alt="{{ item.product.name }}">
+                    <div>Product Name: {{ item.product.name }}</div>
+                    <div>Price: {{ item.product.price }}</div>
+                    <div>Description: {{ item.product.description }}</div>
+                </div>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+        // Get current date and time
+        var currentDate = new Date().toLocaleDateString();
+        var currentTime = new Date().toLocaleTimeString();
+
+        // Update placeholders with current date and time
+        document.getElementById("newOrderDate").textContent = currentDate;
+        document.getElementById("newOrderTime").textContent = currentTime;
+        document.getElementById("pendingOrderDate").textContent = currentDate;
+        document.getElementById("pendingOrderTime").textContent = currentTime;
+        document.getElementById("clearedOrderDate").textContent = currentDate;
+        document.getElementById("clearedOrderTime").textContent = currentTime;
+
+        // Update customer details
+        var customerName = "{{ user.username }}";
+        var customerEmail = "{{ user.email }}";
+        var customerAddress = "{{ user.customer.address }}";
+        document.getElementById("customerName").textContent = customerName;
+        document.getElementById("customerEmail").textContent = customerEmail;
+        document.getElementById("customerAddress").textContent = customerAddress;
+    </script>
+</body>
+</html>

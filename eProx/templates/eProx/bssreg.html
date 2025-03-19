@@ -1,0 +1,74 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>eprox</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" >
+
+        <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    </head>
+    <body>
+        <section id="header">
+            <a href="{%url 'home'%}"><img src="{% static 'images/logo.jpg' %}" class="logo" alt=""></a>
+            <div>
+                <ul id="navbar">
+                   
+                    <li><a  href="{%url 'home'%}">HOME</a></li>
+                    <li><a class="#" href="{%url 'login' %}">Login</a></li>
+                    <li><a class="active" href="#">Sign Up</a></li>
+                    <!-- <li><a href="{%url 'logout'%}">logout</a></li>
+                    <li><a href="{%url 'product'%}">Products</a></li>
+                    <li><a href="profile.html">My profile</a></li>  -->
+                    
+                   
+                    
+                    
+                    <!-- <li id="ig-cart"><a href="{%url 'cart:cart_detail' %}"><i class="fa fa-shopping-cart"></i></a></li> -->
+                    <a href="#" id="close"><i class="fa fa-times"></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                
+                <a href="{%url 'cart:cart_detail' %}l"><i class="fa fa-shopping-cart"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </section>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'CSS/login.css' %}">
+    
+</head>
+<body>
+    <div class="container">
+        <form action="." method="post">
+        {% csrf_token %}
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <label for="username">Business Username:</label>
+                 {{form.username}}
+            </div>
+            <div class="input-group">
+                <label for="password1">Business Password:</label>
+                {{form.password1}}
+            </div>
+            <div class="input-group">
+                <label for="password2">Confirm Business Password:</label>
+                {{form.password2}}
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Registration Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="{% static 'css/productreg.css' %}" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <h1>Business Registration Dashboard</h1>
+    </header>
+
+    <main>
+        <form action=" " method='POST'  enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="productName">Business Name:</label>
+            {{form.name}}
+
+            <label for="productcategory">Business Email:</label>
+            {{form.email}}
+
+            <label for="productDescription">Business Description:</label>
+            {{form.description}}
+
+            <label for="productcategory">Business contacts:</label>
+            {{form.contacts}}
+
+            <label for="productPrice">Business location:</label>
+            {{form.location}}
+
+            
+
+            <label for="productcategory">Business logo:</label>
+            {{form.logo}}
+
+            <button type="submit" >Register Business</button>
+        </form>
+    </main>
+
+    <script>
+        function registerProduct() {
+            // You would typically use JavaScript to handle form submission and interact with the server.
+            // In a real-world scenario, you would use AJAX or fetch to send data to the server.
+            alert('Product registration functionality to be implemented.');
+        }
+    </script>
+</body>
+</html>

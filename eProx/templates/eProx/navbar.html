@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>eprox</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" >
+
+        <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    </head>
+    <body>
+        <section id="header">
+            <a href="{%url 'home'%}"><img src="{% static 'images/logo.jpg' %}" class="logo" alt=""></a>
+            <div>
+                <ul id="navbar">
+                   
+                    <li><a class="{% block homeactive%}{% endblock %}" href="{%url 'home'%}">HOME</a></li>
+
+                    {% if user.is_authenticated %}
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <a href="javascript:;" onclick="parentNode.submit();" class="{% block logoutactive %}{% endblock %}">logout</a>
+                        </form>
+                    </li>
+                    
+                    
+                    {% else %}
+                        <li><a class="{% block loginactive%}{% endblock %}" href="{%url 'login' %}">login</a></li>
+                    {% endif %}    
+                    
+                    {% if user.is_authenticated %}
+                    <li><a class="{% block profileactive%}{% endblock %}" href="{%url 'userinfo'%}">My profile</a></li>
+                    {% endif %} 
+
+                    <form method = 'POST' action=" {% url 'search'%}" class="search-form" role="search">
+                        {% csrf_token %}             
+                        <input class="search-input" type="search" placeholder="Search Products" name="searched">
+                        <button class="search-btn" type="submit">Search</button>
+                    </form>
+                    
+
+
+                    <li id="ig-cart">
+                        <a href="{%url 'cart:cart_detail' %}">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span id="cart-count">{{cartItems}}</span>
+                        </a>
+                    </li>
+                    <a href="#" id="close"><i class="fa fa-times"></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                
+                <a href="{% url 'cart:cart_detail' %}"><i class="fa fa-shopping-cart"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </section>
+
+
+
+            {% block body%}
+
+            
+            {% endblock body%}
+
+        </section>
+        <section id="banner" class="section-m1">
+            <h4>get your products</h4>
+            <h2> up to <span>50 % off</span> this summer</h2>
+            <a href="{%url 'product' %}">
+                <button  class="white">View All Products Here!</button>
+            </a>
+            
+
+        </section>
+        <section id="sm-banner" class="section-p1">
+            <div class="banner-box">
+                <h4>amazing deals on kitchen ware</h4>
+                <h2>discounts available</h2>
+                <span>buy a set and get 10 % off</span> 
+                <a href="{%url 'category' 'Kitchen-Ware' %}">
+                <button  class="white">shop now!</button>
+                </a>
+            </div>
+            <div class="banner-box banner-box2">
+                <h4>exciting offers</h4>
+                <h2>summer season</h2>
+                <span>the right shirts</span>
+                <a href="{%url 'category' 'Fashion' %}">
+                    <button  class="white">shop now!</button>
+                </a>
+            </div>
+        </section>    
+
+        <footer class="section-p1">
+            <div class="col">
+                <img class="logo"src="{% static 'images/logo.jpg' %}">
+                <h4>Contact US</h4>
+                <p><strong>address:</strong> P.O Box 28484 ,william street</p>
+                <p><strong>phone:</strong> +256 456 938 456 ,+256 678 567 400</p>
+                <div class="follow">
+                    <h4>Follow us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest-p"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">sign in</a>
+                <a href="#">view cart</a>
+                                
+
+            </div>
+            
+            
+            <div class="col">
+                <p>Secured Payment Gateways</p>
+                <img class="img1" src="{% static 'images/payment2.png' %}">
+            </div>
+            <div class="copyright">
+                <p> @eprox 2024 copyright</p>
+            </div>
+        </footer>
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

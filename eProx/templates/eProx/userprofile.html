@@ -1,0 +1,124 @@
+{% extends "eProx/navbar.html" %}
+{% load static %}
+
+{% block profileactive%}active{% endblock %}
+
+{% block body%}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        .logo-container {
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px; /* Adjust size as needed */
+            height: 150px; /* Adjust size as needed */
+            border-radius: 50%; /* Makes the image circular */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(210, 221, 226);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2,h3 {
+            text-align: center;
+        }
+
+        .customer-info {
+            margin-bottom: 20px;
+        }
+
+        .customer-info p {
+            margin-bottom: 10px;
+        }
+
+        .order-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .order-table th,
+        .order-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>    
+    <div class="container mt-5">
+        <h1>{{ customer.name }}</h1>
+        <div class="customer-info">
+            <p><strong>Email:</strong> {{ customer.email }}</p>
+            <p><strong>Phone:</strong> {{ customer.phone }}</p>
+            <p><strong>Date Created:</strong> {{ customer.date_created }}</p>
+            <!-- Add any other relevant fields here -->
+        </div>
+    </div><div class="order-container">
+        <h3>YOUR ORDERS</h3>
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <!-- <th>Action</th> New column for the action button -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.date_ordered }}</td>
+                        <td>{{ order.status }}</td>
+                        <!-- <td>
+                            {% if order.status == 'Pending' %}
+                                <form action="{% url 'mark_delivered' order.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit">Mark as Delivered</button>
+                                </form>
+                            {% endif %}
+                        </td> -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    
+</body>
+</html>
+{% endblock body%}
+
+

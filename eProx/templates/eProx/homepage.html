@@ -1,0 +1,57 @@
+{% extends "eProx/navbar.html" %}
+{% load static %}
+
+{% block body%}
+        <section id="hero"  >
+            
+            <h4>WELCOME TO</h4>
+            <h2>Eprox</h2>
+            <h1>NICE TO MEET YOU</h1>
+           
+            <a href="#feature1"><button>More info</button></a>
+
+           
+
+        </section>
+      <section id="feature1"><h2>categories</h2></section>
+        <section id="feature" class="section-p1">
+            
+            
+        
+
+            <div class="fe-box">
+                <img src="{% static 'images/fashion.jpg' %}" alt="">
+                <a href="{%url 'category' 'Fashion' %}"><h6>Fashion</h6></a>
+
+            </div>
+            <div class="fe-box">
+                <img src="{% static 'images/automative.jpg' %}" alt="">
+                <a href="{%url 'category' 'Automative' %}"><h6>Automative</h6></a>
+
+            </div>
+            <div class="fe-box">
+                <img src="{% static 'images/sports.jpg' %}" alt="">
+                <a href="{%url 'category' 'Sports' %}"><h6>Sports</h6></a>
+
+            </div>
+            <div class="fe-box">
+                <img src="{% static 'images/kitchen.jpg' %}" alt="">
+                <a href="{%url 'category' 'Kitchen-Ware' %}"><h6>kitchen Ware</h6></a>
+
+            </div>
+            <div class="fe-box">
+                <img src="{% static 'images/electronics.jpg' %}" alt="">
+                <a href="{%url 'category' 'Electronics' %}"><h6>Electronics</h6></a>
+
+            </div>
+            <div class="fe-box">
+                <img src="{% static 'images/furniture.jpg' %}" alt="">
+                <a href="{%url 'category' 'Furniture' %}"><h6>Furniture</h6></a>
+
+            </div>
+        
+           
+        
+        
+        
+{% endblock body%}

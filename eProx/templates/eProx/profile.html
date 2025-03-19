@@ -1,0 +1,35 @@
+
+{% load static %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" height="150px" width="150px" src="{{user.profile.images.url}}" alt="Profile Image">
+        <div class="media-body">
+            <h2 class="account-heading">{{user.username}}</h2>
+            <p class="text-secondary">{{user.email}}</p>
+            <p class="text-secondary">{{user.first_name}} {{user.last_name}}</p>
+            <p class="text-secondary">{{user.address}}</p>
+            <p class="text-secondary">{{user.city}}, {{user.state}} {{user.zipcode}}</p>
+            <p class="text-secondary">{{user.country}}</p>
+        </div>
+    </div>
+</div>
+<div class="box-element">
+    <h3>User Information</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Information</legend>
+         
+        </fieldset>
+        <div class="form-group">
+            <label for="id_username">Username:</label>
+            <input type="text" class="form-control" id="id_username" name="username" value="{{user.username}}" required>
+        </div>
+        <!-- Remaining form fields... -->
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <br>
+    <a class="btn btn-outline-dark" href="#">&#x2190; Continue Shopping</a>
+</div>
+{% endblock %}

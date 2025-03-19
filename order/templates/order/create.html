@@ -1,0 +1,77 @@
+{% load static %}
+{% block title %}
+Checkout
+{% endblock %}
+{%block content%}
+<head>
+  <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
+</head>
+<div class="container">
+    <h1 class="text-center">Checkout</h1>
+    <div class="order-info">
+        <h3 class="text-center">Your order</h3>
+        <ul style="display: inline;">
+            {% for item in cart %}
+            <li>
+              <img src="{{ item.product.picture.url }}" alt="{{ item.product.name }}" style="max-width: 50px; max-height: 50px;">
+                {{ item.quantity }}x {{ item.product.name }}
+                <span>shs.{{ item.total_price }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        <h4>Total:shs.{{ cart.get_total_price }}</h4>
+    </div>
+    <section class="module">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1 mb-sm-40">
+            <h4 class="font-alt">Login</h4>
+            <hr class="divider-w mb-10">
+            <form action="" class="form" method="POST">
+              {% csrf_token %}
+                  <div class="form-group">
+                  <input class="form-control" id="email" type="text" name="email" placeholder="email"/>
+                  </div>
+                  <div class="form-group">
+                  <input class="form-control" id="password" type="password" name="password" placeholder="Password"/>
+                  </div>
+                  <div class="form-group">
+                  <button class="btn btn-round btn-b">Login</button>
+                  </div>
+            </form>
+          </div>
+          <div class="col-sm-5">
+            <h4 class="font-alt">Register</h4>
+            <hr class="divider-w mb-10">
+              <form action="{% url 'order:order_create' %}" method="POST" class="order-form">
+                  <br>
+                  <p><input class="btn btn-primary btn-sm btn-block" type="submit" value="Place order"></p>
+                  {% csrf_token %}
+                      <div class="form-group">
+                          <label for="username">Username:</label>
+                          {{form.username}}
+                      </div>
+                      <div class="form-group">
+                          <label for="password1">Password:</label>
+                          {{form.password1}}
+                      </div>
+                      <div class="form-group">
+                          <label for="password2">Confirm Password:</label>
+                          {{form.password2}}
+                      </div>
+                      <button type="submit">Sign Up</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+</div>
+
+<div>
+    <label for="password">
+        Confirm Password
+    </label>
+    <input type="password" name="password2" class="form-control">
+</div>
+{% endblock %}

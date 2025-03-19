@@ -1,0 +1,44 @@
+{% extends "eProx/navbar.html" %}
+{% load static %}
+
+{% block body%}
+        <section id="hero">
+            <h4>Eprox</h4>
+            <h2>{{category}}</h2>
+            
+           
+            <a href="#feature1"> <button>More info</button></a>
+
+           
+
+        </section>
+     
+        
+
+        <section id="feature1" >
+            <section id="product1" class="section-p1">
+                <h2>Your {{category}} Products Here.....</h2>
+                <p>new collection</p>
+            
+                <div class="pro-container">
+                    {% for product in products %}
+                    <div class="pro">
+                        <img src="{{product.picture.url}}" alt="">
+                        <div class="des">
+                            <span>{{product.name}}</span>
+                            <h5>{{product.description}}</h5>
+                            
+                            <h4>{{ product.price}}</h4>
+                        </div>
+                        <a href="{% url 'productcard' product.id %}"><button>VIEW PRODUCT</button></a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            
+        </section>
+           
+            
+
+        
+{% endblock body%}

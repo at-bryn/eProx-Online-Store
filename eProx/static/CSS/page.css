@@ -1,0 +1,50 @@
+.container {
+    text-align: center;
+    background-color: lightgray;
+    width: 220vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .btn1 {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination ul {
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination ul li:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination ul li.active {
+    background-color: #007bff;
+    color: white;
+}

@@ -1,0 +1,28 @@
+<!-- eProx/business_view_order.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Business View Orders</title>
+</head>
+<body>
+    <h1>Customer Orders for Your Products</h1>
+
+    {% if customers %}
+        {% for customer, products_ordered in customers.items %}
+            <h2>{{ customer.name }}</h2>
+            <ul>
+                {% for product_name, quantity in products_ordered.items %}
+                    <li>
+                        <strong>Product Name:</strong> {{ product_name }} <br>
+                        <strong>Quantity Ordered:</strong> {{ quantity }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No customer orders found for your products.</p>
+    {% endif %}
+</body>
+</html>

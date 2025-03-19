@@ -1,0 +1,113 @@
+
+ {% load static %}
+ {% block title %}
+ <div id="title">
+ <h2>Your shopping cart</h2></div>
+ {% endblock%}
+ 
+ {% block content%}
+ <!DOCTYPE html>
+ <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+         <title>your cart</title>
+         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/vs.10.0/css/all.css"/>
+ 
+         <link rel="stylesheet" href="{% static 'CSS/cart.css' %}">
+     </head>
+ <body>
+     {% if cart %}  
+     <section id="cart" class="section-p1">
+         <table width="100%">
+             <thead>
+                 <tr>
+                     <td>remove</td>
+                     <td>image</td>
+                     <td>product</td>
+                     <td>price</td>
+                     <td>quantity</td>
+                     <td>Total</td>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     {% for item in cart %}
+                     {% with product=item.product %}
+ 
+ 
+                         <tr>
+                             
+                             <td><i class="fas fa-times-circle"><a href="{% url 'cart:cart_remove' product.id %}">X</a></i></td>
+                             <td class="hidden-xs " width="20" height="19"><a href="{{product.get_absolute_url}}"><img src="{{ product.picture.url }}" alt="{{item.description}}" style="max-width: 100px; max-height: 100px;"></a></td>
+                             <td><h3>{{ product.name }}</h3></td>
+                             <td><h3>shs.{{ item.price }}</h3></td>
+                             <td><h3>{{item.quantity}}</h3> 
+                                 <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                     {% csrf_token %}
+                                     {{ item.update_quantity_form.quantity }}
+                                     {{ item.update_quantity_form.override }}
+                                     <input class="btn btn-primary btn-sm" style="color: rgb(0, 0, 0);" type="submit"
+                                         value="Update">
+                                 </form></td>
+                             <td><h3>shs.{{ item.total_price }}</h3></td>
+                         </tr>
+                         {% endwith %}
+                         {% endfor %}
+                 </tr>
+                 
+                 
+             </tbody>
+         </table>
+     </section>
+     <section id="cart-add" class="'section-p1">
+         <div id="coupon">
+             <h3>Options</h3>
+             <div>
+                 
+                 <a href="{% url "product" %}"><button onclick=window.location='{% url "product" %}'class="normal">continue shopping</button></a>
+             </div>
+             <div>
+                 
+                 <form action="{% url 'cart:cart_clear' %}">
+                     <button class="normal">Clear Cart</button>
+                 </form>
+             </div>
+         </div>
+ 
+         <div id="subtotal">
+             <h3>Cart Totals</h3>
+             <table>
+                 <tr>
+                     <td><strong>ITEMS</strong></td>
+                     <td><strong>AMOUNT</strong></td>
+                 </tr>
+                 
+                 <tr>
+                     
+                     <td><h4>Total items: {{ cart.get_total_quantity }} </h4></td>
+                     <td><strong>shs.{{ cart.get_total_price|floatformat:"2" }}</strong></td>
+                 </tr>
+             </table>
+             {% if user.is_authenticated %}
+                         
+             
+             <button class="normal" onclick=window.location="{% url 'order:create' %}">Proceed To Checkout</button>
+             {% else %}
+             
+             {% endif %}
+ 
+         </div>
+         {% else %}
+ <h1 class="text-center">Your Shopping Cart is Empty!</h1>
+ <div id="cart-empty">
+     <button class="normal"><a href="{% url 'home' %}" >Go to Home
+     </a></button>
+ </div>
+     </section>
+ </body>
+ </html>
+ {% endif %}
+ {% endblock %}
+
